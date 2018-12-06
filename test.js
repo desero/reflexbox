@@ -171,6 +171,22 @@ test('css parses flexbox styles', t => {
   t.is(g.style['justify-content'], 'space-between')
 })
 
+test('css parses visible styles', t => {
+  cx({
+    visible: true
+  })
+  const [ a ] = sheet.cssRules
+  t.is(a.style.display, 'flex')
+})
+
+test('css parses hidden styles', t => {
+  cx({
+    visible: false
+  })
+  const [ a ] = sheet.cssRules
+  t.is(a.style.display, 'none')
+})
+
 test('snapshot', t => {
   const box = render(<Box />).toJSON()
   const flex = render(<Flex />).toJSON()

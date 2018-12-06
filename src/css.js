@@ -1,6 +1,6 @@
 import sheet from './sheet'
 
-const REG = /^([wmp][trblxy]?|flex|wrap|column|auto|align|justify|order)$/
+const REG = /^([wmp][trblxy]?|flex|visible|wrap|column|auto|align|justify|order)$/
 const cache = {}
 
 const css = config => props => {
@@ -97,6 +97,7 @@ const directions = {
 }
 
 const flex = (key, n) => dec([ 'display', n ? 'flex' : 'block' ])
+const visible = (key, n) => dec([ 'display', n ? 'flex' : 'none' ])
 const wrap = (key, n) => dec([ 'flex-wrap', n ? 'wrap' : 'nowrap' ])
 const auto = (key, n) => dec([ 'flex', '1 1 auto' ])
 const column = (key, n) => dec([ 'flex-direction', n ? 'column' : 'row' ])
@@ -109,6 +110,7 @@ const stylers = config => ({
   m: space(config.space),
   p: space(config.space),
   flex,
+  visible,
   wrap,
   auto,
   column,
